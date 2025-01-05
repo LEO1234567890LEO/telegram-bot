@@ -11,13 +11,11 @@ RUN apt-get update && apt-get install -y ffmpeg && apt-get clean
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the application code
+# Copy the entire project into the container
 COPY . .
 
-# Expose a port if you're using webhooks
+# Expose port (if using webhooks; optional)
 EXPOSE 5000
 
-
-
-# Run the bot
-CMD ["python", "bot.py"]
+# Run the application
+CMD ["python", "src/main.py"]
